@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "836716655371",
+    "firebase_url": "https://grabequipment-94deb.firebaseio.com",
+    "project_id": "grabequipment-94deb",
+    "storage_bucket": "grabequipment-94deb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836716655371:android:38d54c288c0fe5c1",
+        "android_client_info": {
+          "package_name": "com.example.carlo.grabequipment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836716655371-v7d33mqh2hqvo37r2bidbf7e5m85us7f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carlo.grabequipment",
+            "certificate_hash": "dd4f5769114fcd37cc45805eb0e1bba642abd4af"
+          }
+        },
+        {
+          "client_id": "836716655371-6lk4078r407gomig95dnrph0b462nhpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcM3bTnxYHZ4j7l3FurlQxVY6w7sgmA_w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836716655371-6lk4078r407gomig95dnrph0b462nhpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

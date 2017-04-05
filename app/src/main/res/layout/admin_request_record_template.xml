@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="ID"
+                android:id="@+id/textView_idTemp"
+                android:textColor="@color/MainColor"
+                android:textStyle="normal|bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Equipment"
+                android:id="@+id/textView_roomTemp"
+                android:textColor="@color/MainColor"
+                android:textStyle="normal|bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Date"
+                android:id="@+id/textView_dateTemp"
+                android:textColor="@color/MainColor"
+                android:textStyle="normal|bold"
+               />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Time"
+                android:id="@+id/textView_timeTemp"
+                android:textColor="@color/MainColor"
+                android:textStyle="normal|bold"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="126dp"
+            android:layout_height="220dp"
+            android:layout_weight="0.13">
+
+            <Button
+                android:text="Borrowed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_approve"
+                android:background="@drawable/rounded_button2"
+                android:textColor="@android:color/background_light"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                android:textAllCaps="false"
+                android:onClick="approve"/>
+
+            <Button
+                android:text="Cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_reject"
+                android:background="@drawable/rounded_button"
+                android:textColor="@android:color/background_light"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                android:textAllCaps="false"
+                android:onClick="reject"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
