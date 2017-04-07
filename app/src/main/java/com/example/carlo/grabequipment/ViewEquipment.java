@@ -140,13 +140,20 @@ public class ViewEquipment extends AppCompatActivity {
                                     String lastName = dataSnapshot.child("Users").child(uid).child("lastName").getValue().toString();
 
                                     Date date = new Date();
-                                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy h:mm:ss a");
+                                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                                    SimpleDateFormat stf = new SimpleDateFormat("h:mm:ss a");
                                     String formattedDate = sdf.format(date);
+                                    String formattedTime = stf.format(date);
 
                                     String key = mDatabase.child("Requests").push().getKey();
                                     mDatabase.child("Requests").child(key).child("lastName").setValue(lastName);
                                     mDatabase.child("Requests").child(key).child("firstName").setValue(firstName);
-                                    mDatabase.child("Requests").child(key).child("timeBorrowed").setValue(formattedDate);
+                                    mDatabase.child("Requests").child(key).child("deviceBorrowed").
+                                            setValue(equipmentSnapshot.child("name").getValue().toString());
+                                    mDatabase.child("Requests").child(key).child("dateBorrowed").setValue(formattedDate);
+                                    mDatabase.child("Requests").child(key).child("dateReturned").setValue("N/A");
+                                    mDatabase.child("Requests").child(key).child("timeBorrowed").setValue(formattedTime);
+                                    mDatabase.child("Requests").child(key).child("timeReturned").setValue("N/A");
                                     mDatabase.child("Requests").child(key).child("studentNumber").setValue(email);
                                     mDatabase.child("Requests").child(key).child("status").setValue("Borrowed");
                                     mDatabase.child("Requests").child(key).child("userID").setValue(uid);

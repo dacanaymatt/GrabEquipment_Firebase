@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:textAlignment="center"
+    android:focusable="false"
+    android:elevation="0dp"
+    android:weightSum="1"
+    android:minHeight="50dp"
+    android:gravity="center_vertical|center_horizontal">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="2013056143"
+                    android:id="@+id/textView_studentNumber"
+                    android:textColor="@color/abc_primary_text_material_light"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="First Name"
+                    android:id="@+id/textView_firstName"
+                    android:textColor="@color/abc_primary_text_material_light"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Last Name"
+                    android:id="@+id/textView_lastName"
+                    android:textColor="@color/abc_primary_text_material_light"
+                    android:textSize="10dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Returned"
+            android:id="@+id/textView_status"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/abc_primary_text_material_light"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="04/04/2017"
+            android:id="@+id/textView_dateBorrowed"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/abc_primary_text_material_light"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="PROJECTOR"
+            android:id="@+id/textView_equipment"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/abc_primary_text_material_light"
+            android:textSize="10dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:entries="@array/status"
+            android:layout_weight="0.40"
+            android:layout_marginLeft="10dp" />
+
+</LinearLayout>

@@ -9,9 +9,15 @@
     <string name="history">Borrow History</string>
     <string name="get">Get Equipment</string>
     <string name="equipment">Equipment</string>
+
     <string-array name="equipment">
         <item>VGA</item>
         <item>Projector</item>
         <item>LED</item>
+    </string-array>
+
+    <string-array name="status">
+        <item>Returned</item>
+        <item>Lost</item>
     </string-array>
 </resources>
