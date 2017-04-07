@@ -124,7 +124,7 @@ public class ViewEquipment extends AppCompatActivity {
 
                         else {
 
-                            for (DataSnapshot equipmentSnapshot : dataSnapshot.child("Equipment").git()) {
+                            for (DataSnapshot equipmentSnapshot : dataSnapshot.child("Equipment").getChildren()) {
 
                                 if(equipmentSnapshot.child("name").getValue() == equipmentType) {
 
