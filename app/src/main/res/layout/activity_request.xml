@@ -20,7 +20,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             app:srcCompat="@drawable/logo"
             android:id="@+id/imageView" />
 
@@ -36,10 +36,82 @@
             android:layout_margin="20dp" />
 
 
-        <ListView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listView_request" />
+            android:gravity="center_horizontal"
+            android:weightSum="1" >
+
+            <TextView
+                android:text="Date Borrowed"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView9"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:textStyle="normal|bold"
+                android:textColor="@color/MainColor"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.30" />
+
+            <TextView
+                android:text="Time Borrowed"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView10"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:textStyle="normal|bold"
+                android:textColor="@color/MainColor"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:text="Date Returned"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView11"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:textStyle="normal|bold"
+                android:textColor="@color/MainColor"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="0dp" />
+
+            <TextView
+                android:text="Equipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:textStyle="normal|bold"
+                android:textColor="@color/MainColor"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:text="Status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView13"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:textStyle="normal|bold"
+                android:textColor="@color/MainColor"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/listView_request"
+            android:layout_marginTop="10dp" />
 
 
     </LinearLayout>

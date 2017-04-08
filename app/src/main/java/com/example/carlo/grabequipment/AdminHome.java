@@ -67,4 +67,11 @@ public class AdminHome extends AppCompatActivity {
 
         mAuth.addAuthStateListener(mAuthListener);
     }
+
+    public void change(View view)
+    {
+        Intent intent = new Intent(this, ChangePassword.class);
+        //intent.putExtra("id", id);
+        startActivity(intent);
+    }
 }

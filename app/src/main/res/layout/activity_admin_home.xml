@@ -90,6 +90,19 @@
             android:textStyle="normal|bold"
             android:onClick="retrieve"
             android:visibility="gone" />
+
+        <TextView
+            android:text="@string/change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_changeAdmin"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/MainColor"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:onClick="change"/>
+
         <TextView
             android:text="@string/logout"
             android:layout_width="match_parent"

@@ -126,48 +126,73 @@ public class ViewEquipment extends AppCompatActivity {
 
                             for (DataSnapshot equipmentSnapshot : dataSnapshot.child("Equipment").getChildren()) {
 
-                                if(equipmentSnapshot.child("name").getValue() == equipmentType) {
+                                boolean hasBorrowed = false;
 
-                                    int amountLeft = Integer.parseInt(equipmentSnapshot.child("amount").getValue().toString());
-                                    amountLeft--;
+                                for(DataSnapshot requestSnapshot : dataSnapshot.child("Requests").getChildren()) {
 
-                                    equipmentSnapshot.child("amount").getRef().setValue(amountLeft);
+                                    if((requestSnapshot.child("userID").getValue().toString()
+                                    .equals(mAuth.getCurrentUser().getUid()) &&
+                                    (requestSnapshot.child("deviceBorrowed").getValue()
+                                    .toString().equals(equipmentType)) &&
+                                    requestSnapshot.child("status").getValue()
+                                    .toString().equals("Borrowed"))) {
 
-                                    String uid = mAuth.getCurrentUser().getUid();
-                                    String email = mAuth.getCurrentUser().getEmail();
+                                        hasBorrowed = true;
+                                        break;
+                                    }
+                                }
 
-                                    String firstName = dataSnapshot.child("Users").child(uid).child("firstName").getValue().toString();
-                                    String lastName = dataSnapshot.child("Users").child(uid).child("lastName").getValue().toString();
+                                if(!hasBorrowed) {
+                                    if(equipmentSnapshot.child("name").getValue() == equipmentType) {
 
-                                    Date date = new Date();
-                                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-                                    SimpleDateFormat stf = new SimpleDateFormat("h:mm:ss a");
-                                    String formattedDate = sdf.format(date);
-                                    String formattedTime = stf.format(date);
+                                        int amountLeft = Integer.parseInt(equipmentSnapshot.child("amount").getValue().toString());
+                                        amountLeft--;
 
-                                    String key = mDatabase.child("Requests").push().getKey();
-                                    mDatabase.child("Requests").child(key).child("lastName").setValue(lastName);
-                                    mDatabase.child("Requests").child(key).child("firstName").setValue(firstName);
-                                    mDatabase.child("Requests").child(key).child("deviceBorrowed").
-                                            setValue(equipmentSnapshot.child("name").getValue().toString());
-                                    mDatabase.child("Requests").child(key).child("dateBorrowed").setValue(formattedDate);
-                                    mDatabase.child("Requests").child(key).child("dateReturned").setValue("N/A");
-                                    mDatabase.child("Requests").child(key).child("timeBorrowed").setValue(formattedTime);
-                                    mDatabase.child("Requests").child(key).child("timeReturned").setValue("N/A");
-                                    mDatabase.child("Requests").child(key).child("studentNumber").setValue(email);
-                                    mDatabase.child("Requests").child(key).child("status").setValue("Borrowed");
-                                    mDatabase.child("Requests").child(key).child("userID").setValue(uid);
+                                        equipmentSnapshot.child("amount").getRef().setValue(amountLeft);
 
-                                    Toast.makeText(ViewEquipment.this, "Successfully requested for a/an '"
-                                            + equipmentType + ",. Please go to the technician as soon as possible.",
-                                            Toast.LENGTH_LONG).show();
+                                        String uid = mAuth.getCurrentUser().getUid();
+                                        String email = mAuth.getCurrentUser().getEmail();
 
-                                    Intent intent = new Intent(ViewEquipment.this, Home.class);
-                                    startActivity(intent);
+                                        String firstName = dataSnapshot.child("Users").child(uid).child("firstName").getValue().toString();
+                                        String lastName = dataSnapshot.child("Users").child(uid).child("lastName").getValue().toString();
+
+                                        Date date = new Date();
+                                        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                                        SimpleDateFormat stf = new SimpleDateFormat("h:mm:ss a");
+                                        String formattedDate = sdf.format(date);
+                                        String formattedTime = stf.format(date);
+
+                                        String key = mDatabase.child("Requests").push().getKey();
+                                        mDatabase.child("Requests").child(key).child("lastName").setValue(lastName);
+                                        mDatabase.child("Requests").child(key).child("firstName").setValue(firstName);
+                                        mDatabase.child("Requests").child(key).child("deviceBorrowed").
+                                                setValue(equipmentSnapshot.child("name").getValue().toString());
+                                        mDatabase.child("Requests").child(key).child("dateBorrowed").setValue(formattedDate);
+                                        mDatabase.child("Requests").child(key).child("dateReturned").setValue("N/A");
+                                        mDatabase.child("Requests").child(key).child("timeBorrowed").setValue(formattedTime);
+                                        mDatabase.child("Requests").child(key).child("timeReturned").setValue("N/A");
+                                        mDatabase.child("Requests").child(key).child("studentNumber").setValue(email);
+                                        mDatabase.child("Requests").child(key).child("status").setValue("Borrowed");
+                                        mDatabase.child("Requests").child(key).child("userID").setValue(uid);
+
+                                        Toast.makeText(ViewEquipment.this, "Successfully requested for a/an '"
+                                                        + equipmentType + ". Please go to the technician as soon as possible.",
+                                                Toast.LENGTH_LONG).show();
+
+                                        Intent intent = new Intent(ViewEquipment.this, Home.class);
+                                        startActivity(intent);
+
+                                        break;
+                                    }
+
+                                }
+                                else {
+                                    Toast.makeText(ViewEquipment.this, "You have already borrowed a/an " +
+                                            equipmentType + ", please return the equipment first" +
+                                            " before borrowing the same equipment again.", Toast.LENGTH_SHORT).show();
 
                                     break;
                                 }
-
                             }
                         }
 
