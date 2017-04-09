@@ -44,6 +44,19 @@
             android:weightSum="1" >
 
             <TextView
+                android:text="Date Borrowed"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:id="@+id/textView6"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:textStyle="normal|bold"
+                android:textColor="@color/MainColor"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
                 android:text="Student Info"
                 android:layout_width="55dp"
                 android:layout_height="wrap_content"
@@ -69,19 +82,6 @@
                 android:layout_marginLeft="15dp" />
 
             <TextView
-                android:text="Date Borrowed"
-                android:layout_width="77dp"
-                android:layout_height="fill_parent"
-                android:id="@+id/textView6"
-                android:textAlignment="center"
-                android:textSize="13sp"
-                android:textStyle="normal|bold"
-                android:textColor="@color/MainColor"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:layout_marginLeft="5dp" />
-
-            <TextView
                 android:text="Equipment"
                 android:layout_width="78dp"
                 android:layout_height="wrap_content"
@@ -95,8 +95,8 @@
 
             <TextView
                 android:text="Change Status"
-                android:layout_width="78dp"
-                android:layout_height="match_parent"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
                 android:id="@+id/textView8"
                 android:textAlignment="center"
                 android:textSize="13sp"
@@ -109,7 +109,8 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listView_request" />
+            android:id="@+id/listView_request"
+            android:layout_margin="5dp" />
 
 
     </LinearLayout>

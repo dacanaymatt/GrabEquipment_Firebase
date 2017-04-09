@@ -1,5 +1,6 @@
 package com.example.carlo.grabequipment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class AdminHistory extends AppCompatActivity {
     private HistoryAdapter adapter;
     private List<BorrowDetail> mBorrowDetail;
     private DatabaseReference mDatabase;
-
+    private ProgressDialog mProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,8 @@ public class AdminHistory extends AppCompatActivity {
             }
         };
 
+        mProgress = new ProgressDialog(this);
+
         lvHistory = (ListView) findViewById(R.id.listView_request);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mBorrowDetail = new ArrayList<>();
@@ -57,6 +60,9 @@ public class AdminHistory extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 for(DataSnapshot requestSnapshot: dataSnapshot.child("Requests").getChildren()) {
+
+                    mProgress.setMessage("Loading ...");
+                    mProgress.show();
 
                     BorrowDetail borrowDetail = new BorrowDetail();
 
@@ -71,6 +77,8 @@ public class AdminHistory extends AppCompatActivity {
                 adapter = new HistoryAdapter(getApplicationContext(), mBorrowDetail);
 
                 lvHistory.setAdapter(adapter);
+
+                mProgress.dismiss();
             }
 
 

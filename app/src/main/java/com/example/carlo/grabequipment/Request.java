@@ -1,5 +1,6 @@
 package com.example.carlo.grabequipment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class Request extends AppCompatActivity {
     private StudentRequestAdapter adapter;
     private List<StudentRequestDetail> mStudentRequestList;
     private DatabaseReference mDatabase;
+    private ProgressDialog mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class Request extends AppCompatActivity {
             }
         };
 
+        mProgress = new ProgressDialog(this);
+
         lvStudentRequest = (ListView) findViewById(R.id.listView_request);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mStudentRequestList = new ArrayList<>();
@@ -55,6 +59,10 @@ public class Request extends AppCompatActivity {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                mProgress.setTitle("Loading...");
+                mProgress.show();
+
                 for(DataSnapshot requestSnapshot : dataSnapshot.child("Requests").getChildren()) {
 
                     if(requestSnapshot.child("userID").getValue().toString().equals(mAuth.getCurrentUser().getUid().toString())) {
@@ -74,6 +82,8 @@ public class Request extends AppCompatActivity {
                 adapter = new StudentRequestAdapter(getApplicationContext(), mStudentRequestList);
 
                 lvStudentRequest.setAdapter(adapter);
+
+                mProgress.dismiss();
             }
 
             @Override

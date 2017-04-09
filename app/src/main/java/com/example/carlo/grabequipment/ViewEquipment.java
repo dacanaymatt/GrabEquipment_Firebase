@@ -1,5 +1,6 @@
 package com.example.carlo.grabequipment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class ViewEquipment extends AppCompatActivity {
     private EquipmentAdapter adapter;
     private List<Equipment> mEquipmentList;
     private DatabaseReference mDatabase;
-
+    private ProgressDialog mProgress;
     private boolean isAdmin;
 
     /*@Override
@@ -75,6 +76,8 @@ public class ViewEquipment extends AppCompatActivity {
             }
         };
 
+        mProgress = new ProgressDialog(this);
+
         lvEquipment = (ListView) findViewById(R.id.listView_equipments);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mEquipmentList = new ArrayList<>();
@@ -83,20 +86,27 @@ public class ViewEquipment extends AppCompatActivity {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
 
+                mProgress.setTitle("Loading...");
+                mProgress.show();
+
                 for (DataSnapshot equipmentSnapshot : dataSnapshot.child("Equipment").getChildren()) {
 
-                    Equipment equipment = new Equipment();
+                    if(!(equipmentSnapshot.child("amount").getValue().toString().equals("0"))) {
 
-                    equipment.setName(String.valueOf(equipmentSnapshot.child("name").getValue()));
-                    equipment.setAmount(Integer.parseInt(String.valueOf(equipmentSnapshot.child("amount").getValue())));
+                        Equipment equipment = new Equipment();
 
-                    mEquipmentList.add(equipment);
+                        equipment.setName(String.valueOf(equipmentSnapshot.child("name").getValue()));
+                        equipment.setAmount(Integer.parseInt(String.valueOf(equipmentSnapshot.child("amount").getValue())));
 
+                        mEquipmentList.add(equipment);
+                    }
                 }
 
                 adapter = new EquipmentAdapter(getApplicationContext(), mEquipmentList);
 
                 lvEquipment.setAdapter(adapter);
+
+                mProgress.dismiss();
 
                 lvEquipment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -143,7 +153,8 @@ public class ViewEquipment extends AppCompatActivity {
                                 }
 
                                 if(!hasBorrowed) {
-                                    if(equipmentSnapshot.child("name").getValue() == equipmentType) {
+                                    if(equipmentSnapshot.child("name").getValue() == equipmentType &&
+                                            (!equipmentSnapshot.child("amount").getValue().toString().equals("0"))) {
 
                                         int amountLeft = Integer.parseInt(equipmentSnapshot.child("amount").getValue().toString());
                                         amountLeft--;
