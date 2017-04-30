@@ -93,6 +93,7 @@ public class AddEquipment extends AppCompatActivity {
                             + equipmentAmount + " added",Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(AddEquipment.this, ViewEquipment.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("isAdmin", true);
                     startActivity(intent);
 

@@ -43,6 +43,7 @@ public class EditEquipment extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() == null) {
                     Intent intent = new Intent(EditEquipment.this, Login.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                     startActivity(intent);
                 }
             }
@@ -86,6 +87,7 @@ public class EditEquipment extends AppCompatActivity {
                                 "' updated.",Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(EditEquipment.this, ViewEquipment.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("isAdmin", true);
                         startActivity(intent);
 

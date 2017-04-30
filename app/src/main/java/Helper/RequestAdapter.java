@@ -116,6 +116,7 @@ public class RequestAdapter extends BaseAdapter {
 
                                 Intent intent = new Intent(convertView.getContext(), AdminRequest.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 convertView.getContext().startActivity(intent);
                                 break;
                             }
@@ -156,6 +157,10 @@ public class RequestAdapter extends BaseAdapter {
                                 requestSnapShot.child("status").getRef().setValue("Lost");
 
                                 Toast.makeText(convertView.getContext(), "Successfully changed status." ,  Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(convertView.getContext(), AdminRequest.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                convertView.getContext().startActivity(intent);
 
                                 break;
                             }
